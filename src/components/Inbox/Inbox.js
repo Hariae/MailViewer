@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ListView from './ListView';
-import createView from './CreateView';
 import CreateView from './CreateView';
+import EmailView from './EmailView';
 
 class Inbox extends Component{
     constructor(props){
@@ -9,26 +9,38 @@ class Inbox extends Component{
         console.log(props);
         this.state= {
             isListSelected : true,
-            isCreateSelected : false
+            isCreateSelected : false,
+            displayEmail: false
         }
 
         //bind
         this.toggleListSelect = this.toggleListSelect.bind(this);
         this.toggleCreateSelect = this.toggleCreateSelect.bind(this);
+        this.toggleEmailView = this.toggleEmailView.bind(this);
         
     }
 
     toggleListSelect = (event) =>{
         this.setState({
             isListSelected : true,
-            isCreateSelected : false
+            isCreateSelected : false,
+            displayEmail: false
         });
     }
 
     toggleCreateSelect = (event) =>{
         this.setState({
             isListSelected : false,
-            isCreateSelected : true
+            isCreateSelected : true,
+            displayEmail: false
+        });
+    }
+
+    toggleEmailView = (event)=>{
+        //console.log('inside' + email + content);
+        this.setState({
+            displayEmail: true,
+            isListSelected : false
         });
     }
 
@@ -37,13 +49,19 @@ class Inbox extends Component{
         var listView = null;
 
         if(this.state.isListSelected === true){
-            listView = <ListView/>
+            listView = <ListView toggleEmailView = {this.toggleEmailView}/>
         }
 
         var createView = null;
 
         if(this.state.isCreateSelected === true){
             createView = <CreateView/>
+        }
+
+        var emailView = null;
+
+        if(this.state.displayEmail === true){
+            emailView = <EmailView/>
         }
 
         return(
@@ -59,6 +77,7 @@ class Inbox extends Component{
                 </div>
                 {listView}
                 {createView}
+                {emailView}
             </div>
         )
     }

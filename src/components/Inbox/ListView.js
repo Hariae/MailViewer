@@ -6,10 +6,14 @@ class ListView extends Component {
         console.log(props);
     }
 
+    alertme = ()=>{
+        alert('alert');
+    }
+
     render() {
         return (
             <div>
-                <div className="row mt-2">
+                <div className="row mt-2" onClick={this.props.toggleEmailView}>
                     <div className="col-3">
                         <div className="container">
                             <div><input type="checkbox" className="ml-2 mr-3 chkbox" /> xyz@gmail.com</div>

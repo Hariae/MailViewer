@@ -56,3 +56,7 @@
 .chkbox{
   transform: scale(1.5);
 }
+
+.flt-right{
+  float: right;
+}
