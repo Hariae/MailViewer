@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import {Route} from 'react-router-dom';
-import Inbox from './Inbox/Inbox';
 
-class Main extends Component{
+class CreateView extends Component{
     constructor(props){
         super(props);
         console.log(props);
@@ -11,11 +9,13 @@ class Main extends Component{
     render(){
         return(
             <div>
-                <Route path="/" component={Inbox}/>
+<h1>CreateView</h1>
             </div>
         )
     }
+    
+
+
 }
 
-
-export default Main;
+export default CreateView;

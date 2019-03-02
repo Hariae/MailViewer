@@ -31,3 +31,28 @@
     transform: rotate(360deg);
   }
 }
+
+/*custom styling*/
+
+.center-align{
+  text-align: center;
+}
+
+.page-header{
+  background-color: #563d7c;
+  height: 50px;
+  color: whitesmoke;
+  font-size: 35px;
+}
+
+.menu-header{
+  font-size: 25px;
+}
+
+.bg-selected{
+  background-color: lightcyan;
+}
+
+.chkbox{
+  transform: scale(1.5);
+}
