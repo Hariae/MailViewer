@@ -10,7 +10,8 @@ class Inbox extends Component{
         this.state= {
             isListSelected : true,
             isCreateSelected : false,
-            displayEmail: false
+            displayEmail: false,
+            emailId : 0
         }
 
         //bind
@@ -37,10 +38,14 @@ class Inbox extends Component{
     }
 
     toggleEmailView = (event)=>{
-        //console.log('inside' + email + content);
+        const target = event.target;
+        const id = target.id;
+        console.log('target', target);
+        console.log(id);
         this.setState({
             displayEmail: true,
-            isListSelected : false
+            isListSelected : false,
+            emailId : id
         });
     }
 
@@ -61,7 +66,8 @@ class Inbox extends Component{
         var emailView = null;
 
         if(this.state.displayEmail === true){
-            emailView = <EmailView/>
+            console.log('Email', this.state.emailId);
+            emailView = <EmailView emailId={this.state.emailId}/>
         }
 
         return(

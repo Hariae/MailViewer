@@ -4,31 +4,55 @@ import axios from 'axios';
 class EmailView extends Component{
     constructor(props){
         super(props);
-        console.log(props);
+        console.log('iddd'+ this.props.emailId);
+
+        this.state = {
+            emailAddress: "",
+            subject: "",
+            content: ""
+        }
     }
 
     componentDidMount(){
-        
+
+        axios.get('http://5c5a21f9af3ff700140de477.mockapi.io/api/email/'+this.props.emailId)
+            .then((response)=>{
+                if(response.status === 200){
+                    this.setState({
+                        emailAddress: response.data.to,
+                        subject: response.data.subject,
+                        content: response.data.text
+                    })
+                }
+            });
     }
 
+    
+    
+   
+
     render(){
+
+
+    
         return(
             <div>
                  <div className="pt-3 pb-3 ml-5">
-                    <p>To: xyz@gmail.com</p>
+                    <p>To: {this.state.emailAddress}</p>
                 </div>
                 <hr/>
                 <div className="pt-3 pb-3 ml-5">
-                    <p>Subject: Subject</p>
+                    <p>Subject: {this.state.subject}</p>
                 </div>
                 <hr/>
                 <div className="pt-3 pb-3 ml-5">
                     <div>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                   {this.state.content}
                     </div>
                 </div>
                 <div className="flt-right mr-5">
-                    <button className="btn-lg btn-success">Send</button>
+                <button className="btn-lg btn-info mr-2">Prev</button>
+                    <button className="btn-lg btn-primary">Next</button>
                 </div>
             </div>
         )
