@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
 import Inbox from './Inbox/Inbox';
+import Display from './Display/Display';
 
 class Main extends Component{
     constructor(props){
@@ -11,7 +12,8 @@ class Main extends Component{
     render(){
         return(
             <div>
-                <Route path="/" component={Inbox}/>
+                <Route exact path="/" component={Inbox}/>
+                <Route path="/display" component={Display} />
             </div>
         )
     }
